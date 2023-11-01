@@ -9,11 +9,6 @@ import RoomRouter from './routes/roomRouter.js'
 import cookieParser from 'cookie-parser'
 
 
-//*middleware
-app.use(cookieParser())
-app.use(cors())
-app.use(express.json())
-
 const MONGODB_URL="mongodb+srv://moviedekha42:MfUgUsrLBTSF54wi@lamadev-hostel-booking.schlp4x.mongodb.net/?retryWrites=true&w=majority"
 
 main().catch(err => console.log(err))
@@ -21,6 +16,11 @@ async function main(){
     await mongoose.connect(MONGODB_URL);
     console.log('database connected')
   }
+
+//*middleware
+app.use(cookieParser())
+app.use(cors())
+app.use(express.json())
 
 //router middleware
 app.use('/api/users', UserRouter)
